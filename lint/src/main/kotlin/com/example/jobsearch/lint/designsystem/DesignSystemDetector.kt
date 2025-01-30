@@ -56,7 +56,6 @@ class DesignSystemDetector : Detector(), Detector.UastScanner {
             "Button" to "JobSearchButton",
             "OutlinedButton" to "JobSearchOutlinedButton",
             "TextButton" to "JobSearchTextButton",
-            "Icon" to "JobSearchIcon",
             "NavigationBar" to "JobSearchNavigationBar",
             "NavigationBarItem" to "JobSearchNavigationBarItem",
             "NavigationRail" to "JobSearchNavigationRail",
@@ -72,8 +71,9 @@ class DesignSystemDetector : Detector(), Detector.UastScanner {
             "MediumTopAppBar" to "JobSearchTopAppBar",
             "LargeTopAppBar" to "JobSearchTopAppBar",
         )
+
         val RECEIVER_NAMES = mapOf(
-            "Icons" to "AnifoxIcons",
+            "Icons" to "JobSearchIcons",
         )
 
         fun reportIssue(

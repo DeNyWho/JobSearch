@@ -13,7 +13,7 @@ object JobSearchIcons {
     val heartNovistigation = R.drawable.heart_novistigation
     val jobs = R.drawable.jobs
     val leftArrow = R.drawable.left_arrow
-    val mail = R.drawable.mail
+    val response = R.drawable.response
     val map = R.drawable.map
     val messages = R.drawable.messages
     val profile = R.drawable.profile

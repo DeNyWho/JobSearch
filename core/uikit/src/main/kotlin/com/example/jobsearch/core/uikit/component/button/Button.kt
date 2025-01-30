@@ -41,7 +41,7 @@ fun JobSearchButton(
 
 @PreviewLightDark
 @Composable
-private fun PreviewAnifoxButton() {
+private fun PreviewJobSearchButton() {
     DefaultPreview {
         JobSearchButton(
             shape = MaterialTheme.shapes.small,

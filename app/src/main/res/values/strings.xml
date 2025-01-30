@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">JobSearch</string>
+    <string name="not_connected">Отсутствует интернет соединение</string>
+    <string name="navigation_bar_search_title">Поиск</string>
+    <string name="navigation_bar_favourite_title">Избранное</string>
+    <string name="navigation_bar_response_title">Отклики</string>
+    <string name="navigation_bar_messages_title">Сообщения</string>
+    <string name="navigation_bar_profile_title">Профиль</string>
 </resources>

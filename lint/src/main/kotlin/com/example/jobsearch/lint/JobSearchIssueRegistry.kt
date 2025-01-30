@@ -18,8 +18,8 @@ class JobSearchIssueRegistry : IssueRegistry() {
     override val minApi: Int = 13
 
     override val vendor: Vendor = Vendor(
-        vendorName = "Anifox",
-        feedbackUrl = "https://github.com/DeNyWho/AnifoxAndroid/issues",
-        contact = "https://github.com/DeNyWho/AnifoxAndroid",
+        vendorName = "JobSearch",
+        feedbackUrl = "https://github.com/DeNyWho/JobSearch/issues",
+        contact = "https://github.com/DeNyWho/JobSearch",
     )
 }

@@ -52,6 +52,14 @@ android {
 }
 
 dependencies {
+    implementation(projects.feature.auth)
+    implementation(projects.feature.search)
+    implementation(projects.feature.favourite)
+
+    implementation(projects.domain)
+
+    implementation(projects.core.uikit)
+    implementation(projects.core.common)
 
 
     implementation(libs.androidx.activity.compose)
