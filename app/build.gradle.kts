@@ -1,7 +1,11 @@
 plugins {
+    alias(libs.plugins.jobsearch.android.application)
+    alias(libs.plugins.jobsearch.android.application.compose)
+    alias(libs.plugins.jobsearch.android.application.firebase)
+    alias(libs.plugins.jobsearch.android.hilt)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.baselineprofile)
 }
 
 android {
@@ -10,12 +14,12 @@ android {
 
     defaultConfig {
         applicationId = "com.example.jobsearch"
-        minSdk = 26
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 100
+        versionName = "1.0.0-alpha"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -26,16 +30,24 @@ android {
                 "proguard-rules.pro"
             )
         }
+        create("benchmark") {
+            initWith(buildTypes.getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
+        }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        compose = true
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
@@ -52,9 +64,13 @@ dependencies {
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.kotlinx.coroutines.guava)
     implementation(libs.androidx.profileinstaller)
+    "baselineProfile"(project(":benchmarks"))
+
+    ksp(libs.hilt.compiler)
 
     debugImplementation(libs.androidx.compose.ui.testManifest)
 
+    kspTest(libs.hilt.compiler)
 
     testImplementation(libs.hilt.android.testing)
 
