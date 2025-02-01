@@ -2,10 +2,18 @@ plugins {
     alias(libs.plugins.jobsearch.android.library)
     alias(libs.plugins.jobsearch.android.hilt)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.secrets)
 }
 
 android {
     namespace = "com.example.jobsearch.data.network"
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {
