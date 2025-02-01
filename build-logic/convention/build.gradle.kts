@@ -44,6 +44,10 @@ gradlePlugin {
             id = "jobsearch.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidApplicationJacoco") {
+            id = "jobsearch.android.application.jacoco"
+            implementationClass = "AndroidApplicationJacocoConventionPlugin"
+        }
         register("androidLibraryCompose") {
             id = "jobsearch.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
@@ -59,6 +63,10 @@ gradlePlugin {
         register("androidTest") {
             id = "jobsearch.android.test"
             implementationClass = "AndroidTestConventionPlugin"
+        }
+        register("androidLibraryJacoco") {
+            id = "jobsearch.android.library.jacoco"
+            implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
         register("androidHilt") {
             id = "jobsearch.android.hilt"

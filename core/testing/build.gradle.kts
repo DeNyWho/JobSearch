@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.jobsearch.android.library)
+    alias(libs.plugins.jobsearch.android.library.jacoco)
 }
 
 android {

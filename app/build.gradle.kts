@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.jobsearch.android.application)
     alias(libs.plugins.jobsearch.android.application.compose)
+    alias(libs.plugins.jobsearch.android.application.jacoco)
     alias(libs.plugins.jobsearch.android.application.firebase)
     alias(libs.plugins.jobsearch.android.hilt)
     alias(libs.plugins.kotlin.serialization)
