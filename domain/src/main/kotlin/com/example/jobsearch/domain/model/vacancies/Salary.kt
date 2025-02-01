@@ -4,6 +4,6 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class Salary(
-    val full: String,
-    val short: String?,
+    val full: String = "",
+    val short: String? = null,
 )

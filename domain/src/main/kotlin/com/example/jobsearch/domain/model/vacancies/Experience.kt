@@ -4,6 +4,6 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class Experience(
-    val previewText: String,
-    val text: String,
+    val previewText: String = "",
+    val text: String = "",
 )

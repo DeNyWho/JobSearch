@@ -35,4 +35,6 @@ data class VacancyDTO(
     val description: String,
     @SerialName("responsibilities")
     val responsibilities: String,
+    @SerialName("questions")
+    val questions: List<String>,
 )

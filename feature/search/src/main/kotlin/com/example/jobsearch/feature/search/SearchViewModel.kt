@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jobsearch.domain.model.offers.Offer
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
@@ -13,6 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,12 +25,16 @@ internal class SearchViewModel @Inject constructor(
 ): ViewModel() {
 
     private val _offers: MutableState<StateListWrapper<Offer>> =
-        mutableStateOf(StateListWrapper())
+        mutableStateOf(StateListWrapper.loading())
     val offers: MutableState<StateListWrapper<Offer>> = _offers
 
     private val _vacancies: MutableState<StateListWrapper<Vacancy>> =
-        mutableStateOf(StateListWrapper())
+        mutableStateOf(StateListWrapper.loading())
     val vacancies: MutableState<StateListWrapper<Vacancy>> = _vacancies
+
+    private val _vacanciesForYou: MutableState<StateListWrapper<Vacancy>> =
+        mutableStateOf(StateListWrapper.loading())
+    val vacanciesForYou: MutableState<StateListWrapper<Vacancy>> = _vacanciesForYou
 
     init {
         loadData()
@@ -43,6 +49,9 @@ internal class SearchViewModel @Inject constructor(
                 launch {
                     getVacancies()
                 }
+                launch {
+                    getVacanciesForYou()
+                }
             }
         }
     }
@@ -56,6 +65,12 @@ internal class SearchViewModel @Inject constructor(
     private fun getVacancies() {
         getVacanciesUseCase.invoke().onEach {
             _vacancies.value = it
+        }.launchIn(viewModelScope)
+    }
+
+    private fun getVacanciesForYou() {
+        getVacanciesUseCase.invoke().take(2).onEach {
+            _vacanciesForYou.value = it
         }.launchIn(viewModelScope)
     }
 }

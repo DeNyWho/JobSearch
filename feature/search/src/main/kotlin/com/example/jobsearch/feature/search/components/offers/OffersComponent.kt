@@ -61,5 +61,4 @@ private fun PreviewOffersComponent(
             contentState = param.contentState,
         )
     }
-
 }

@@ -23,6 +23,7 @@ fun VacancyDTO.toVacancy(): Vacancy = Vacancy(
     appliedNumber = appliedNumber,
     description = description,
     responsibilities = responsibilities,
+    questions = questions,
 )
 
 fun AddressDTO.toAddress(): Address = Address(

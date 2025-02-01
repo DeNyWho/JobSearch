@@ -10,6 +10,7 @@ object JobSearchIcons {
     val eyeInactive = R.drawable.eye_inactive
     val filter = R.drawable.filter
     val heart = R.drawable.heart
+    val heartFavourite = R.drawable.heart_favourite
     val heartNovistigation = R.drawable.heart_novistigation
     val jobs = R.drawable.jobs
     val leftArrow = R.drawable.left_arrow

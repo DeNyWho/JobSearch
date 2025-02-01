@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="feature_search_section_vacancy_watch">
+        <item quantity="one">Сейчас просматривает %d человек</item>
+        <item quantity="few">Сейчас просматривают %d человека</item>
+        <item quantity="many">Сейчас просматривают %d человек</item>
+    </plurals>
+</resources>
