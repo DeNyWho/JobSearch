@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class JobDTO(
     @SerialName("offers")
-    val offers: List<OfferDTO>,
+    val offers: List<OfferDTO> = listOf(),
     @SerialName("vacancies")
-    val vacancies: List<VacancyDTO>,
+    val vacancies: List<VacancyDTO> = listOf(),
 )

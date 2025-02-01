@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ExperienceDTO(
     @SerialName("previewText")
-    val previewText: String,
+    val previewText: String = "",
     @SerialName("text")
-    val text: String,
+    val text: String = "",
 )

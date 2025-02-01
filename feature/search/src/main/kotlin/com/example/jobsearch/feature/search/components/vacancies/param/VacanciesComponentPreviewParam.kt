@@ -5,6 +5,7 @@ import com.example.jobsearch.core.uikit.param.GlobalParams.Offers
 import com.example.jobsearch.core.uikit.param.GlobalParams.Vacancies
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
+import kotlinx.collections.immutable.toImmutableList
 
 internal data class VacanciesComponentPreviewParam(
     val contentState: StateListWrapper<Vacancy>,
@@ -17,7 +18,7 @@ internal class VacanciesComponentProvider:
     override val values: Sequence<VacanciesComponentPreviewParam>
         get() = listOf(
             VacanciesComponentPreviewParam(
-                contentState = StateListWrapper(data = Vacancies),
+                contentState = StateListWrapper(data = Vacancies.take(2).toImmutableList()),
             )
         ).asSequence()
 }

@@ -172,10 +172,12 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 jobsearch-android-application = { id = "jobsearch.android.application" }
 jobsearch-android-application-compose = { id = "jobsearch.android.application.compose" }
 jobsearch-android-application-firebase = { id = "jobsearch.android.application.firebase" }
+jobsearch-android-application-jacoco = { id = "jobsearch.android.application.jacoco" }
 jobsearch-android-feature = { id = "jobsearch.android.feature" }
 jobsearch-android-hilt = { id = "jobsearch.android.hilt" }
 jobsearch-android-library = { id = "jobsearch.android.library" }
 jobsearch-android-library-compose = { id = "jobsearch.android.library.compose" }
+jobsearch-android-library-jacoco = { id = "jobsearch.android.library.jacoco" }
 jobsearch-android-lint = { id = "jobsearch.android.lint" }
 jobsearch-android-room = { id = "jobsearch.android.room" }
 jobsearch-android-test = { id = "jobsearch.android.test" }

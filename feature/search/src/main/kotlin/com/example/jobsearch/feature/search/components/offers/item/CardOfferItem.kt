@@ -1,5 +1,7 @@
 package com.example.jobsearch.feature.search.components.offers.item
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -12,12 +14,16 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.jobsearch.core.uikit.icon.JobSearchIcons
 import com.example.jobsearch.core.uikit.theme.darkBlue
+import com.example.jobsearch.core.uikit.theme.darkGreen
 import com.example.jobsearch.core.uikit.theme.green
 import com.example.jobsearch.core.uikit.utils.DefaultPreview
 import com.example.jobsearch.domain.model.offers.Offer
@@ -45,15 +51,66 @@ internal fun CardOfferItem(
                 .padding(vertical = 12.dp, horizontal = 8.dp)
                 .fillMaxSize(),
         ) {
-            Card(
-                modifier = Modifier
-                    .size(32.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = darkBlue,
-                ),
-                shape = CircleShape,
-            ) {
-
+            when(data.id) {
+                "near_vacancies" -> {
+                    Image(
+                        modifier = Modifier.size(32.dp),
+                        painter = painterResource(JobSearchIcons.nearVacancies),
+                        contentDescription = null,
+                    )
+                }
+                "level_up_resume" -> {
+                    Card(
+                        modifier = Modifier
+                            .size(32.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = darkGreen,
+                        ),
+                        shape = CircleShape,
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Image(
+                                modifier = Modifier.size(20.dp),
+                                painter = painterResource(JobSearchIcons.star),
+                                contentDescription = null,
+                            )
+                        }
+                    }
+                }
+                "temporary_job" -> {
+                    Card(
+                        modifier = Modifier
+                            .size(32.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = darkGreen,
+                        ),
+                        shape = CircleShape,
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Image(
+                                modifier = Modifier.size(20.dp),
+                                painter = painterResource(JobSearchIcons.jobs),
+                                contentDescription = null,
+                            )
+                        }
+                    }
+                }
+                null -> {
+                    Card(
+                        modifier = Modifier
+                            .size(32.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = darkBlue,
+                        ),
+                        shape = CircleShape,
+                    ) { }
+                }
             }
 
             Column(

@@ -1,17 +1,18 @@
 package com.example.jobsearch.feature.search
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jobsearch.domain.model.offers.Offer
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
 import com.example.jobsearch.domain.usecase.offers.GetOffersUseCase
 import com.example.jobsearch.domain.usecase.vacancies.GetVacanciesUseCase
+import com.example.jobsearch.feature.search.model.state.SearchUiState
+import com.example.jobsearch.feature.search.model.ui.SearchUiScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
@@ -23,18 +24,21 @@ internal class SearchViewModel @Inject constructor(
     private val getOffersUseCase: GetOffersUseCase,
     private val getVacanciesUseCase: GetVacanciesUseCase,
 ): ViewModel() {
+    private val _uiState: MutableStateFlow<SearchUiState> =
+        MutableStateFlow(SearchUiState())
+    val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
-    private val _offers: MutableState<StateListWrapper<Offer>> =
-        mutableStateOf(StateListWrapper.loading())
-    val offers: MutableState<StateListWrapper<Offer>> = _offers
+    private val _offers: MutableStateFlow<StateListWrapper<Offer>> =
+        MutableStateFlow(StateListWrapper.loading())
+    val offers: StateFlow<StateListWrapper<Offer>> = _offers.asStateFlow()
 
-    private val _vacancies: MutableState<StateListWrapper<Vacancy>> =
-        mutableStateOf(StateListWrapper.loading())
-    val vacancies: MutableState<StateListWrapper<Vacancy>> = _vacancies
+    private val _vacancies: MutableStateFlow<StateListWrapper<Vacancy>> =
+        MutableStateFlow(StateListWrapper.loading())
+    val vacancies: StateFlow<StateListWrapper<Vacancy>> = _vacancies.asStateFlow()
 
-    private val _vacanciesForYou: MutableState<StateListWrapper<Vacancy>> =
-        mutableStateOf(StateListWrapper.loading())
-    val vacanciesForYou: MutableState<StateListWrapper<Vacancy>> = _vacanciesForYou
+    private val _vacanciesForYou: MutableStateFlow<StateListWrapper<Vacancy>> =
+        MutableStateFlow(StateListWrapper.loading())
+    val vacanciesForYou: StateFlow<StateListWrapper<Vacancy>> = _vacanciesForYou.asStateFlow()
 
     init {
         loadData()
@@ -42,17 +46,9 @@ internal class SearchViewModel @Inject constructor(
 
     private fun loadData() {
         viewModelScope.launch {
-            coroutineScope {
-                launch {
-                    getOffers()
-                }
-                launch {
-                    getVacancies()
-                }
-                launch {
-                    getVacanciesForYou()
-                }
-            }
+            launch { getOffers() }
+            launch { getVacancies() }
+            launch { getVacanciesForYou() }
         }
     }
 
@@ -69,8 +65,20 @@ internal class SearchViewModel @Inject constructor(
     }
 
     private fun getVacanciesForYou() {
-        getVacanciesUseCase.invoke().take(2).onEach {
+        getVacanciesUseCase.invoke(isForYou = true).onEach {
             _vacanciesForYou.value = it
         }.launchIn(viewModelScope)
+    }
+
+    fun changeUiState() {
+        viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(
+                uiScreen = if (_uiState.value.uiScreen == SearchUiScreen.ForYou) {
+                    SearchUiScreen.All
+                } else {
+                    SearchUiScreen.ForYou
+                }
+            )
+        }
     }
 }

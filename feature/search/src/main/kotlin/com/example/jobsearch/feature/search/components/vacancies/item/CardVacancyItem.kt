@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -21,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -47,6 +49,7 @@ internal fun CardVacancyItem(
     data: Vacancy,
 ) {
     val formatter = DateTimeFormatter.ofPattern("dd MMMM", Locale("ru"))
+    val lookingNumber = data.lookingNumber
 
     Card(
         modifier = modifier
@@ -63,15 +66,19 @@ internal fun CardVacancyItem(
                 .fillMaxWidth(),
         ) {
             Row {
-                Column {
-                    Text(
-                        text = pluralStringResource(R.plurals.feature_search_section_vacancy_watch, (0..10).random(), (0..10).random()),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = green
-                    )
+                Column(
+                    modifier = Modifier.weight(1f),
+                ) {
+                    if(lookingNumber != null) {
+                        Text(
+                            modifier = Modifier.padding(bottom = 12.dp),
+                            text = pluralStringResource(R.plurals.feature_search_section_vacancy_watch, lookingNumber, lookingNumber),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = green
+                        )
+                    }
 
                     Text(
-                        modifier = Modifier.padding(top = 12.dp),
                         text = data.title,
                         style = MaterialTheme.typography.headlineLarge,
                     )
@@ -124,8 +131,6 @@ internal fun CardVacancyItem(
                     )
                 }
 
-                Spacer(Modifier.weight(1f))
-
                 Image(
                     modifier = Modifier
                         .size(24.dp)
@@ -142,6 +147,7 @@ internal fun CardVacancyItem(
                 contentColor = MaterialTheme.colorScheme.onPrimary,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 paddingValues = PaddingValues(vertical = 8.dp),
+                shape = RoundedCornerShape(50.dp),
             ) {
                 Text(
                     text = stringResource(R.string.feature_search_section_vacancy_respond),

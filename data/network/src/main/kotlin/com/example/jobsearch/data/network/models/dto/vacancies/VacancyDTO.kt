@@ -10,31 +10,31 @@ import java.time.LocalDate
 @Serializable
 data class VacancyDTO(
     @SerialName("id")
-    val id: String,
+    val id: String = "",
     @SerialName("lookingNumber")
-    val lookingNumber: Int?,
+    val lookingNumber: Int? = null,
     @SerialName("title")
-    val title: String,
+    val title: String = "",
     @SerialName("address")
-    val address: AddressDTO,
+    val address: AddressDTO = AddressDTO(),
     @SerialName("company")
-    val company: String,
+    val company: String = "",
     @SerialName("experience")
-    val experience: ExperienceDTO,
+    val experience: ExperienceDTO = ExperienceDTO(),
     @SerialName("publishedDate")
-    val publishedDate: LocalDate,
+    val publishedDate: LocalDate = LocalDate.now(),
     @SerialName("isFavorite")
-    val isFavorite: Boolean,
+    val isFavorite: Boolean = false,
     @SerialName("salary")
-    val salary: SalaryDTO,
+    val salary: SalaryDTO = SalaryDTO(),
     @SerialName("schedules")
-    val schedules: List<String>,
+    val schedules: List<String> = listOf(),
     @SerialName("appliedNumber")
-    val appliedNumber: Int?,
+    val appliedNumber: Int? = null,
     @SerialName("description")
-    val description: String,
+    val description: String = "",
     @SerialName("responsibilities")
-    val responsibilities: String,
+    val responsibilities: String = "",
     @SerialName("questions")
-    val questions: List<String>,
+    val questions: List<String> = listOf(),
 )

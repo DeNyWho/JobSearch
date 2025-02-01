@@ -1,6 +1,7 @@
 package com.example.jobsearch.feature.search.components.vacancies
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,17 +27,14 @@ internal fun VacanciesComponent(
     contentState: StateListWrapper<Vacancy>,
     contentArrangement: Arrangement.Vertical = CardVacancyItemDefaults.VerticalArrangement.ForYou,
 ) {
-    LazyColumn (
+    Column(
         modifier = modifier,
         verticalArrangement = contentArrangement,
     ) {
-        if(contentState.isLoading) {
-
+        if (contentState.isLoading) {
+            // Loading state handling
         } else {
-            items(
-                contentState.data,
-                key = { it.id }
-            ) { vacancy ->
+            contentState.data.forEach { vacancy ->
                 CardVacancyItem(
                     data = vacancy,
                 )

@@ -15,13 +15,17 @@ import kotlinx.coroutines.flow.flowOn
 internal class VacanciesRepositoryImpl(
     private val jobService: JobService,
 ): VacanciesRepository {
-    override fun getVacancies(): Flow<StateListWrapper<Vacancy>> {
+    override fun getVacancies(isForYou: Boolean): Flow<StateListWrapper<Vacancy>> {
         return flow {
             emit(StateListWrapper.loading())
 
             val state = when(val vacanciesResult = jobService.getJob()) {
                 is Resource.Success -> {
-                    val data = vacanciesResult.data.vacancies.map { it.toVacancy() }.toImmutableList()
+                    val data = if(isForYou) {
+                        vacanciesResult.data.vacancies.map { it.toVacancy() }.take(2).toImmutableList()
+                    } else {
+                        vacanciesResult.data.vacancies.map { it.toVacancy() }.toImmutableList()
+                    }
                     StateListWrapper(data)
                 }
                 is Resource.Error -> {

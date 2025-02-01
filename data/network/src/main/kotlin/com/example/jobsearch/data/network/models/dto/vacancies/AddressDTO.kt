@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AddressDTO(
     @SerialName("town")
-    val town: String,
+    val town: String = "",
     @SerialName("street")
-    val street: String,
+    val street: String = "",
     @SerialName("house")
-    val house: String,
+    val house: String = "",
 )

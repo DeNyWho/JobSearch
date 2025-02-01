@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class OfferDTO(
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
     @SerialName("title")
     val title: String,
     @SerialName("button")

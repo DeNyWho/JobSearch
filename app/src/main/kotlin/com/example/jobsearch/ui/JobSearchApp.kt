@@ -36,6 +36,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.jobsearch.R
+import com.example.jobsearch.core.uikit.component.JobSearchBackground
 import com.example.jobsearch.core.uikit.component.navigation.JobSearchNavigationBar
 import com.example.jobsearch.core.uikit.component.navigation.JobSearchNavigationBarItem
 import com.example.jobsearch.core.uikit.theme.basicBlack
@@ -52,11 +53,7 @@ fun JobSearchApp(appState: JobSearchAppState) {
         FAVOURITE_ROUTE,
     )
 
-    Surface (
-        modifier = Modifier
-            .background(basicBlack)
-            .fillMaxSize(),
-    ) {
+    JobSearchBackground {
         val snackbarHostState = remember { SnackbarHostState() }
         val currentDestination = appState.currentDestination
 

@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface VacanciesRepository {
 
-    fun getVacancies(): Flow<StateListWrapper<Vacancy>>
+    fun getVacancies(isForYou: Boolean): Flow<StateListWrapper<Vacancy>>
 }

@@ -6,7 +6,7 @@ import com.example.jobsearch.domain.state.StateListWrapper
 import kotlinx.coroutines.flow.Flow
 
 class GetVacanciesUseCase(private val vacanciesRepository: VacanciesRepository) {
-    operator fun invoke(): Flow<StateListWrapper<Vacancy>> {
-        return vacanciesRepository.getVacancies()
+    operator fun invoke(isForYou: Boolean = false): Flow<StateListWrapper<Vacancy>> {
+        return vacanciesRepository.getVacancies(isForYou)
     }
 }

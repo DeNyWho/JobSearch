@@ -15,6 +15,7 @@ object JobSearchIcons {
     val jobs = R.drawable.jobs
     val leftArrow = R.drawable.left_arrow
     val response = R.drawable.response
+    val nearVacancies = R.drawable.near_vacancies
     val map = R.drawable.map
     val messages = R.drawable.messages
     val profile = R.drawable.profile

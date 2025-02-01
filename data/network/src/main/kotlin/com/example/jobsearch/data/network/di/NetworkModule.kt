@@ -18,7 +18,9 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.header
+import io.ktor.http.ContentType
 import io.ktor.http.URLProtocol
+import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
@@ -47,6 +49,15 @@ internal object NetworkModule {
     fun providesHttpClient(json: Json): HttpClient = HttpClient (OkHttp) {
         install(ContentNegotiation) {
             json(json)
+            register(
+                ContentType.Application.OctetStream, KotlinxSerializationConverter(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                    }
+                )
+            )
         }
         defaultRequest {
             header("Content-Type", "application/json")

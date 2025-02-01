@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SalaryDTO(
     @SerialName("full")
-    val full: String,
+    val full: String = "",
     @SerialName("short")
-    val short: String?,
+    val short: String? = null,
 )

@@ -2,4 +2,7 @@
 <resources>
     <string name="feature_search_section_vacancy_published">Опубликовано</string>
     <string name="feature_search_section_vacancy_respond">Откликнуться</string>
+    <string name="feature_search_section_vacancy_for_you_title">Вакансии для вас</string>
+    <string name="feature_search_section_search_for_you">Должность, ключевые слова</string>
+    <string name="feature_search_section_search_all">Поиск по подходящим вакансиям</string>
 </resources>
