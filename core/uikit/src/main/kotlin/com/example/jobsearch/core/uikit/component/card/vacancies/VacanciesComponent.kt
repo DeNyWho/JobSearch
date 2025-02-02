@@ -8,11 +8,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.example.jobsearch.core.uikit.component.card.vacancies.item.CardVacancyItem
 import com.example.jobsearch.core.uikit.component.card.vacancies.item.CardVacancyItemDefaults
+import com.example.jobsearch.core.uikit.component.card.vacancies.item.ShowCardVacancyItemShimmer
 import com.example.jobsearch.core.uikit.component.card.vacancies.param.VacanciesComponentPreviewParam
 import com.example.jobsearch.core.uikit.component.card.vacancies.param.VacanciesComponentProvider
 import com.example.jobsearch.core.uikit.utils.DefaultPreview
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
+import com.valentinilk.shimmer.Shimmer
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.rememberShimmer
 
 @Composable
 fun VacanciesComponent(
@@ -20,13 +24,16 @@ fun VacanciesComponent(
     contentState: StateListWrapper<Vacancy>,
     contentArrangement: Arrangement.Vertical = CardVacancyItemDefaults.VerticalArrangement.ForYou,
     onFavouriteClick: (Vacancy) -> Unit = { },
+    shimmer: Shimmer = rememberShimmer(ShimmerBounds.View),
 ) {
     Column(
         modifier = modifier,
         verticalArrangement = contentArrangement,
     ) {
         if (contentState.isLoading) {
-            // Loading state handling
+            ShowCardVacancyItemShimmer(
+                shimmerInstance = shimmer,
+            )
         } else {
             contentState.data.forEach { vacancy ->
                 CardVacancyItem(

@@ -12,7 +12,7 @@ val DarkColorScheme = darkColorScheme(
     onBackground = Color.White,
     surface = basicGreyFirst,
     onSurface = Color.White,
-    onSurfaceVariant = basicGreyThird,
+    onSurfaceVariant = basicGreyFifth,
     primaryContainer = green,
     onPrimary = Color.White,
 )
@@ -23,7 +23,7 @@ val LightColorScheme = lightColorScheme(
     onBackground = Color.White,
     surface = basicGreyFirst,
     onSurface = Color.White,
-    onSurfaceVariant = basicGreyThird,
+    onSurfaceVariant = basicGreyFifth,
     primaryContainer = green,
     onPrimary = Color.White,
 )
