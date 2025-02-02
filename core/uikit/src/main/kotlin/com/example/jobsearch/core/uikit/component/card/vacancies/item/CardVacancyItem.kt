@@ -1,18 +1,13 @@
-package com.example.jobsearch.feature.search.components.vacancies.item
+package com.example.jobsearch.core.uikit.component.card.vacancies.item
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -21,25 +16,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.example.jobsearch.core.uikit.R
 import com.example.jobsearch.core.uikit.component.button.JobSearchButton
+import com.example.jobsearch.core.uikit.component.card.vacancies.item.param.CardVacancyItemPreviewParam
+import com.example.jobsearch.core.uikit.component.card.vacancies.item.param.CardVacancyItemProvider
 import com.example.jobsearch.core.uikit.icon.JobSearchIcons
 import com.example.jobsearch.core.uikit.theme.basicGreyThird
 import com.example.jobsearch.core.uikit.theme.green
 import com.example.jobsearch.core.uikit.utils.DefaultPreview
 import com.example.jobsearch.domain.model.vacancies.Vacancy
-import com.example.jobsearch.feature.home.R
-import com.example.jobsearch.feature.search.components.offers.item.param.CardOfferItemPreviewParam
-import com.example.jobsearch.feature.search.components.offers.item.param.CardOfferItemProvider
-import com.example.jobsearch.feature.search.components.vacancies.item.param.CardVacancyItemPreviewParam
-import com.example.jobsearch.feature.search.components.vacancies.item.param.CardVacancyItemProvider
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
@@ -72,7 +63,7 @@ internal fun CardVacancyItem(
                     if(lookingNumber != null) {
                         Text(
                             modifier = Modifier.padding(bottom = 12.dp),
-                            text = pluralStringResource(R.plurals.feature_search_section_vacancy_watch, lookingNumber, lookingNumber),
+                            text = pluralStringResource(R.plurals.core_uikit_vacancy_watch, lookingNumber, lookingNumber),
                             style = MaterialTheme.typography.bodyLarge,
                             color = green
                         )
@@ -125,7 +116,7 @@ internal fun CardVacancyItem(
 
                     Text(
                         modifier = Modifier.padding(top = 12.dp),
-                        text = "${stringResource(R.string.feature_search_section_vacancy_published)} ${data.publishedDate.format(formatter)}",
+                        text = "${stringResource(R.string.core_uikit_vacancy_published)} ${data.publishedDate.format(formatter)}",
                         style = MaterialTheme.typography.bodyLarge,
                         color = basicGreyThird,
                     )
@@ -150,7 +141,7 @@ internal fun CardVacancyItem(
                 shape = RoundedCornerShape(50.dp),
             ) {
                 Text(
-                    text = stringResource(R.string.feature_search_section_vacancy_respond),
+                    text = stringResource(R.string.core_uikit_vacancy_respond),
                     style = MaterialTheme.typography.labelMedium,
                 )
             }

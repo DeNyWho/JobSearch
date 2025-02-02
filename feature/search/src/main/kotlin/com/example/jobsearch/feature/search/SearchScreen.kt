@@ -15,16 +15,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.jobsearch.core.uikit.component.card.vacancies.VacanciesComponent
 import com.example.jobsearch.core.uikit.utils.DefaultPreview
 import com.example.jobsearch.domain.model.offers.Offer
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
-import com.example.jobsearch.feature.home.R
 import com.example.jobsearch.feature.search.components.filter.FilterComponent
 import com.example.jobsearch.feature.search.components.more.MoreComponent
 import com.example.jobsearch.feature.search.components.offers.OffersComponent
 import com.example.jobsearch.feature.search.components.search.SearchComponent
-import com.example.jobsearch.feature.search.components.vacancies.VacanciesComponent
 import com.example.jobsearch.feature.search.model.state.SearchUiState
 import com.example.jobsearch.feature.search.model.ui.SearchUiScreen
 import com.example.jobsearch.feature.search.param.SearchContentPreviewParam

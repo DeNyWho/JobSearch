@@ -10,7 +10,6 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import java.time.LocalDate
 import java.util.UUID
-import kotlin.math.exp
 
 object GlobalParams {
     val OfferSingle: Offer = Offer(

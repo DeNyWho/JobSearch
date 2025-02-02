@@ -1,7 +1,6 @@
-package com.example.jobsearch.feature.search.components.vacancies.param
+package com.example.jobsearch.core.uikit.component.card.vacancies.param
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.example.jobsearch.core.uikit.param.GlobalParams.Offers
 import com.example.jobsearch.core.uikit.param.GlobalParams.Vacancies
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper

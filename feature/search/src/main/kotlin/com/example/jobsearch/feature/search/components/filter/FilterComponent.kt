@@ -16,7 +16,7 @@ import com.example.jobsearch.core.uikit.icon.JobSearchIcons
 import com.example.jobsearch.core.uikit.theme.blue
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
-import com.example.jobsearch.feature.home.R
+import com.example.jobsearch.feature.search.R
 
 @Composable
 internal fun FilterComponent(

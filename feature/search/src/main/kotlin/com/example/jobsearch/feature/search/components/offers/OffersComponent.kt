@@ -15,8 +15,6 @@ import com.example.jobsearch.domain.model.offers.Offer
 import com.example.jobsearch.domain.state.StateListWrapper
 import com.example.jobsearch.feature.search.components.offers.item.CardOfferItem
 import com.example.jobsearch.feature.search.components.offers.item.CardOfferItemDefaults
-import com.example.jobsearch.feature.search.components.offers.item.param.CardOfferItemPreviewParam
-import com.example.jobsearch.feature.search.components.offers.item.param.CardOfferItemProvider
 import com.example.jobsearch.feature.search.components.offers.param.OffersComponentPreviewParam
 import com.example.jobsearch.feature.search.components.offers.param.OffersComponentProvider
 import java.util.UUID

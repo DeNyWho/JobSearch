@@ -1,4 +1,4 @@
-package com.example.jobsearch.feature.search.components.vacancies.item
+package com.example.jobsearch.core.uikit.component.card.vacancies.item
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.unit.dp

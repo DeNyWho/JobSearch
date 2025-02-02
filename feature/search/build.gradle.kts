@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.jobsearch.feature.home"
+    namespace = "com.example.jobsearch.feature.search"
 }
 
 dependencies {

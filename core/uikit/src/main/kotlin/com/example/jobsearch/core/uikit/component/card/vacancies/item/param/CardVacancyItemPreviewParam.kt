@@ -1,4 +1,4 @@
-package com.example.jobsearch.feature.search.components.vacancies.item.param
+package com.example.jobsearch.core.uikit.component.card.vacancies.item.param
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.example.jobsearch.core.uikit.param.GlobalParams

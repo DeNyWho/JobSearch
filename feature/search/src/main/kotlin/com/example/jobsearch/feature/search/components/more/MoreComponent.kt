@@ -7,17 +7,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.pluralStringResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.jobsearch.core.uikit.component.button.JobSearchButton
 import com.example.jobsearch.core.uikit.theme.blue
-import com.example.jobsearch.core.uikit.theme.green
-import com.example.jobsearch.domain.model.offers.Offer
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
-import com.example.jobsearch.feature.home.R
+import com.example.jobsearch.feature.search.R
 
 @Composable
 internal fun MoreComponent(
