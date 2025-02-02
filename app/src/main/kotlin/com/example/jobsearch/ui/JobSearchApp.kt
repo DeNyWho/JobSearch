@@ -1,13 +1,11 @@
 package com.example.jobsearch.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -39,8 +37,10 @@ import com.example.jobsearch.R
 import com.example.jobsearch.core.uikit.component.JobSearchBackground
 import com.example.jobsearch.core.uikit.component.navigation.JobSearchNavigationBar
 import com.example.jobsearch.core.uikit.component.navigation.JobSearchNavigationBarItem
-import com.example.jobsearch.core.uikit.theme.basicBlack
 import com.example.jobsearch.feature.favourite.navigation.FAVOURITE_ROUTE
+import com.example.jobsearch.feature.messages.navigation.MESSAGES_ROUTE
+import com.example.jobsearch.feature.profile.navigation.PROFILE_ROUTE
+import com.example.jobsearch.feature.responses.navigation.RESPONSES_ROUTE
 import com.example.jobsearch.feature.search.navigation.SEARCH_ROUTE
 import com.example.jobsearch.navigation.JobSearchNavHost
 import com.example.jobsearch.navigation.TopLevelDestination
@@ -51,6 +51,9 @@ fun JobSearchApp(appState: JobSearchAppState) {
     val screensWithNavBar = listOf(
         SEARCH_ROUTE,
         FAVOURITE_ROUTE,
+        RESPONSES_ROUTE,
+        MESSAGES_ROUTE,
+        PROFILE_ROUTE,
     )
 
     JobSearchBackground {

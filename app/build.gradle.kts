@@ -56,6 +56,10 @@ dependencies {
     implementation(projects.feature.auth)
     implementation(projects.feature.search)
     implementation(projects.feature.favourite)
+    implementation(projects.feature.detail)
+    implementation(projects.feature.messages)
+    implementation(projects.feature.responses)
+    implementation(projects.feature.profile)
 
     implementation(projects.domain)
 

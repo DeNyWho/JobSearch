@@ -4,7 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.example.jobsearch.feature.auth.navigation.authScreen
+import com.example.jobsearch.feature.detail.navigation.detailScreen
 import com.example.jobsearch.feature.favourite.navigation.favouriteScreen
+import com.example.jobsearch.feature.messages.navigation.messagesScreen
+import com.example.jobsearch.feature.profile.navigation.profileScreen
+import com.example.jobsearch.feature.responses.navigation.responsesScreen
 import com.example.jobsearch.feature.search.navigation.SEARCH_ROUTE
 import com.example.jobsearch.feature.search.navigation.searchScreen
 import com.example.jobsearch.ui.JobSearchAppState
@@ -25,5 +29,9 @@ fun JobSearchNavHost(
         authScreen()
         searchScreen()
         favouriteScreen()
+        detailScreen()
+        messagesScreen()
+        responsesScreen()
+        profileScreen()
     }
 }

@@ -33,13 +33,21 @@ include(":app")
 
 include(":lint")
 include(":benchmarks")
+
 include(":core:uikit")
 include(":core:common")
 include(":core:testing")
+
 include(":domain")
+
 include(":data:local")
 include(":data:network")
 include(":data:source")
+
 include(":feature:auth")
 include(":feature:search")
 include(":feature:favourite")
+include(":feature:responses")
+include(":feature:messages")
+include(":feature:profile")
+include(":feature:detail")

@@ -13,6 +13,9 @@ import androidx.navigation.navOptions
 import androidx.tracing.trace
 import com.example.jobsearch.core.common.util.network.NetworkMonitor
 import com.example.jobsearch.feature.favourite.navigation.navigateToFavourite
+import com.example.jobsearch.feature.messages.navigation.navigateToMessages
+import com.example.jobsearch.feature.profile.navigation.navigateToProfile
+import com.example.jobsearch.feature.responses.navigation.navigateToResponses
 import com.example.jobsearch.feature.search.navigation.navigateToSearch
 import com.example.jobsearch.navigation.TopLevelDestination
 import kotlinx.coroutines.CoroutineScope
@@ -78,9 +81,9 @@ class JobSearchAppState(
             when (topLevelDestination) {
                 TopLevelDestination.SEARCH -> navController.navigateToSearch(topLevelNavOptions)
                 TopLevelDestination.FAVOURITE -> navController.navigateToFavourite(topLevelNavOptions)
-                TopLevelDestination.RESPONSE -> TODO()
-                TopLevelDestination.MESSAGES -> TODO()
-                TopLevelDestination.PROFILE -> TODO()
+                TopLevelDestination.RESPONSE -> navController.navigateToResponses(topLevelNavOptions)
+                TopLevelDestination.MESSAGES -> navController.navigateToMessages(topLevelNavOptions)
+                TopLevelDestination.PROFILE -> navController.navigateToProfile(topLevelNavOptions)
             }
         }
     }
