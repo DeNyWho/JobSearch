@@ -37,10 +37,6 @@ internal class SearchViewModel @Inject constructor(
         MutableStateFlow(StateListWrapper.loading())
     val vacancies: StateFlow<StateListWrapper<Vacancy>> = _vacancies.asStateFlow()
 
-    private val _vacanciesForYou: MutableStateFlow<StateListWrapper<Vacancy>> =
-        MutableStateFlow(StateListWrapper.loading())
-    val vacanciesForYou: StateFlow<StateListWrapper<Vacancy>> = _vacanciesForYou.asStateFlow()
-
     init {
         loadData()
     }
@@ -49,7 +45,6 @@ internal class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             launch { getOffers() }
             launch { getVacancies() }
-            launch { getVacanciesForYou() }
         }
     }
 
@@ -63,14 +58,6 @@ internal class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             getVacanciesUseCase.invoke().onEach {
                 _vacancies.value = it
-            }.launchIn(viewModelScope)
-        }
-    }
-
-    private fun getVacanciesForYou() {
-        viewModelScope.launch {
-            getVacanciesUseCase.invoke(isForYou = true).onEach {
-                _vacanciesForYou.value = it
             }.launchIn(viewModelScope)
         }
     }

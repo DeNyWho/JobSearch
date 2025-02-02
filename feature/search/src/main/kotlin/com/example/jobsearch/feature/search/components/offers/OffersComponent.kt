@@ -15,8 +15,12 @@ import com.example.jobsearch.domain.model.offers.Offer
 import com.example.jobsearch.domain.state.StateListWrapper
 import com.example.jobsearch.feature.search.components.offers.item.CardOfferItem
 import com.example.jobsearch.feature.search.components.offers.item.CardOfferItemDefaults
+import com.example.jobsearch.feature.search.components.offers.item.showCardOfferItemShimmer
 import com.example.jobsearch.feature.search.components.offers.param.OffersComponentPreviewParam
 import com.example.jobsearch.feature.search.components.offers.param.OffersComponentProvider
+import com.valentinilk.shimmer.Shimmer
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.rememberShimmer
 import java.util.UUID
 
 @Composable
@@ -25,6 +29,7 @@ internal fun OffersComponent(
     offerItemWidth: Dp = CardOfferItemDefaults.Width.Default,
     offerItemHeight: Dp = CardOfferItemDefaults.Height.Default,
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp),
+    shimmer: Shimmer = rememberShimmer(ShimmerBounds.View),
     contentState: StateListWrapper<Offer>,
 ) {
     LazyRow(
@@ -33,7 +38,7 @@ internal fun OffersComponent(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         if(contentState.isLoading) {
-
+            showCardOfferItemShimmer(shimmerInstance = shimmer)
         } else {
             items(
                 contentState.data,

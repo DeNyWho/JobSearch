@@ -21,6 +21,9 @@ internal class OffersComponentProvider:
         get() = listOf(
             OffersComponentPreviewParam(
                 contentState = StateListWrapper(data = Offers),
-            )
+            ),
+            OffersComponentPreviewParam(
+                contentState = StateListWrapper.loading(),
+            ),
         ).asSequence()
 }

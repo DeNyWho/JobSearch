@@ -4,13 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -24,6 +21,7 @@ import com.example.jobsearch.feature.search.components.filter.FilterComponent
 import com.example.jobsearch.feature.search.components.more.MoreComponent
 import com.example.jobsearch.feature.search.components.offers.OffersComponent
 import com.example.jobsearch.feature.search.components.search.SearchComponent
+import com.example.jobsearch.feature.search.components.title.VacanciesTitleComponent
 import com.example.jobsearch.feature.search.model.state.SearchUiState
 import com.example.jobsearch.feature.search.model.ui.SearchUiScreen
 import com.example.jobsearch.feature.search.param.SearchContentPreviewParam
@@ -36,13 +34,11 @@ internal fun SearchScreen(
     val uiState by viewModel.uiState.collectAsState()
     val offers by viewModel.offers.collectAsState()
     val vacancies by viewModel.vacancies.collectAsState()
-    val vacanciesForYou by viewModel.vacanciesForYou.collectAsState()
 
     SearchContent(
         uiState,
         offers = offers,
         vacancies = vacancies,
-        vacanciesForYou = vacanciesForYou,
         onMoreClick = {
             viewModel.changeUiState()
         },
@@ -60,7 +56,6 @@ private fun SearchContent(
     uiState: SearchUiState,
     offers: StateListWrapper<Offer>,
     vacancies: StateListWrapper<Vacancy>,
-    vacanciesForYou: StateListWrapper<Vacancy>,
     onMoreClick: () -> Unit = { },
     onBackClick: () -> Unit = { },
     onFavouriteClick: (Vacancy) -> Unit = { },
@@ -71,7 +66,6 @@ private fun SearchContent(
                 SearchUIForYou(
                     offers = offers,
                     vacancies = vacancies,
-                    vacanciesForYou = vacanciesForYou,
                     uiState = uiState,
                     onMoreClick = onMoreClick,
                     onFavouriteClick = onFavouriteClick,
@@ -93,7 +87,6 @@ private fun SearchContent(
 private fun SearchUIForYou(
     offers: StateListWrapper<Offer>,
     vacancies: StateListWrapper<Vacancy>,
-    vacanciesForYou: StateListWrapper<Vacancy>,
     uiState: SearchUiState,
     onMoreClick: () -> Unit = { },
     onFavouriteClick: (Vacancy) -> Unit = { },
@@ -117,19 +110,18 @@ private fun SearchUIForYou(
         }
 
         item {
-            Text(
+            VacanciesTitleComponent(
                 modifier = Modifier.padding(start = 16.dp, top = 32.dp),
-                text = stringResource(R.string.feature_search_section_vacancy_for_you_title),
-                style = MaterialTheme.typography.displayMedium,
-                color = MaterialTheme.colorScheme.onBackground,
+                contentState = vacancies,
             )
         }
 
         item {
             VacanciesComponent(
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
-                contentState = vacanciesForYou,
+                contentState = vacancies,
                 onFavouriteClick = onFavouriteClick,
+                isForYou = true,
             )
         }
 
@@ -191,7 +183,6 @@ private fun PreviewSearchContent(
             uiState = param.uiState,
             offers = param.offers,
             vacancies = param.vacancies,
-            vacanciesForYou = param.vacanciesForYou,
         )
     }
 }

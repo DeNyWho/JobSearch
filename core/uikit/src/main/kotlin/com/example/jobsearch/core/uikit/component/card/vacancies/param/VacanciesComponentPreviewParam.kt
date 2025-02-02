@@ -18,6 +18,9 @@ internal class VacanciesComponentProvider:
         get() = listOf(
             VacanciesComponentPreviewParam(
                 contentState = StateListWrapper(data = Vacancies.take(3).toImmutableList()),
+            ),
+            VacanciesComponentPreviewParam(
+                contentState = StateListWrapper.loading(),
             )
         ).asSequence()
 }

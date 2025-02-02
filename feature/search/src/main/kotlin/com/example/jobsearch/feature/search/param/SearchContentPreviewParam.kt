@@ -8,13 +8,11 @@ import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.state.StateListWrapper
 import com.example.jobsearch.feature.search.model.state.SearchUiState
 import com.example.jobsearch.feature.search.model.ui.SearchUiScreen
-import kotlinx.collections.immutable.toImmutableList
 
 internal data class SearchContentPreviewParam(
     val uiState: SearchUiState,
     val offers: StateListWrapper<Offer>,
     val vacancies: StateListWrapper<Vacancy>,
-    val vacanciesForYou: StateListWrapper<Vacancy>,
 )
 
 internal class SearchContentProvider:
@@ -27,13 +25,11 @@ internal class SearchContentProvider:
                 uiState = SearchUiState(uiScreen = SearchUiScreen.ForYou),
                 offers = StateListWrapper(data = Offers),
                 vacancies = StateListWrapper(data = Vacancies),
-                vacanciesForYou = StateListWrapper(data = Vacancies.take(3).toImmutableList()),
             ),
             SearchContentPreviewParam(
                 uiState = SearchUiState(uiScreen = SearchUiScreen.All),
                 offers = StateListWrapper(data = Offers),
                 vacancies = StateListWrapper(data = Vacancies),
-                vacanciesForYou = StateListWrapper(data = Vacancies.toImmutableList()),
             )
         ).asSequence()
 }
