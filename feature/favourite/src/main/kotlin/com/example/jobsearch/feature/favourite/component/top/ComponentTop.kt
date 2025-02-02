@@ -34,7 +34,7 @@ internal fun ComponentTop(
 
         Text(
             modifier = Modifier.padding(top = 24.dp),
-            text = pluralStringResource(R.plurals.feature_favourite_section_top, vacanciesSize, vacanciesSize),
+            text = pluralStringResource(com.example.jobsearch.core.uikit.R.plurals.core_uikit_vacancies_count, vacanciesSize, vacanciesSize),
             style = MaterialTheme.typography.bodyLarge,
             color = basicGreyThird,
         )

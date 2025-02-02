@@ -30,7 +30,7 @@ internal fun FilterComponent(
         modifier = modifier,
     ) {
         Text(
-            text = pluralStringResource(R.plurals.feature_search_section_filter_vacancies, vacanciesSize, vacanciesSize),
+            text = pluralStringResource(com.example.jobsearch.core.uikit.R.plurals.core_uikit_vacancies_count, vacanciesSize, vacanciesSize),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onBackground,
         )

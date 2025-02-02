@@ -2,12 +2,12 @@ package com.example.jobsearch.feature.search.components.more
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.jobsearch.core.uikit.component.button.JobSearchButton
 import com.example.jobsearch.core.uikit.theme.blue
@@ -32,7 +32,7 @@ internal fun MoreComponent(
         onClick = onClick,
     ) {
         Text(
-            text = pluralStringResource(R.plurals.feature_search_section_more_vacancies, vacanciesSize, vacanciesSize),
+            text = "${stringResource(R.string.feature_search_section_button)} ${pluralStringResource(com.example.jobsearch.core.uikit.R.plurals.core_uikit_vacancies_count, vacanciesSize, vacanciesSize)}",
             style = MaterialTheme.typography.labelLarge,
         )
     }

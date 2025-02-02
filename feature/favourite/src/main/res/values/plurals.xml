@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <plurals name="feature_favourite_section_top">
-        <item quantity="one">%d вакансия</item>
-        <item quantity="few">%d вакансии</item>
-        <item quantity="many">%d вакансий</item>
-    </plurals>
-</resources>
