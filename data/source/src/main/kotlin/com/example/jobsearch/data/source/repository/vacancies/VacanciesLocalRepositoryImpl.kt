@@ -6,11 +6,8 @@ import com.example.jobsearch.data.local.mappers.vacancy.toExperienceEntity
 import com.example.jobsearch.data.local.mappers.vacancy.toSalaryEntity
 import com.example.jobsearch.data.local.mappers.vacancy.toVacancy
 import com.example.jobsearch.data.local.mappers.vacancy.toVacancyEntity
-import com.example.jobsearch.data.local.model.vacancy.VacancyWithDetails
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.repository.vacancies.VacanciesLocalRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 internal class VacanciesLocalRepositoryImpl(
     private val vacancyDao: VacancyDao,
@@ -29,10 +26,16 @@ internal class VacanciesLocalRepositoryImpl(
         )
     }
 
-    override suspend fun updateFavouriteVacancy(vacancyId: String): Vacancy? {
-        vacancyDao.updateFavoriteStatus(vacancyId)
+    override suspend fun updateFavouriteVacancy(vacancy: Vacancy): Vacancy? {
+        val localVacancy = vacancyDao.getVacancyById(vacancy.id)
 
-        return vacancyDao.getVacancyById(vacancyId)?.toVacancy()
+        if (localVacancy == null) {
+            insertVacancy(vacancy.copy(isFavorite = true))
+        } else {
+            vacancyDao.updateFavoriteStatus(vacancy.id)
+        }
+
+        return vacancyDao.getVacancyById(vacancy.id)?.toVacancy()
     }
 
 }

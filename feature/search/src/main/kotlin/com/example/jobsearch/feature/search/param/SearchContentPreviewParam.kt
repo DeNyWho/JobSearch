@@ -27,13 +27,13 @@ internal class SearchContentProvider:
                 uiState = SearchUiState(uiScreen = SearchUiScreen.ForYou),
                 offers = StateListWrapper(data = Offers),
                 vacancies = StateListWrapper(data = Vacancies),
-                vacanciesForYou = StateListWrapper(data = Vacancies.take(2).toImmutableList()),
+                vacanciesForYou = StateListWrapper(data = Vacancies.take(3).toImmutableList()),
             ),
             SearchContentPreviewParam(
                 uiState = SearchUiState(uiScreen = SearchUiScreen.All),
                 offers = StateListWrapper(data = Offers),
                 vacancies = StateListWrapper(data = Vacancies),
-                vacanciesForYou = StateListWrapper(data = Vacancies.take(2).toImmutableList()),
+                vacanciesForYou = StateListWrapper(data = Vacancies.toImmutableList()),
             )
         ).asSequence()
 }

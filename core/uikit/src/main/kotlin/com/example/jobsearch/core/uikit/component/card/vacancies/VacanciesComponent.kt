@@ -19,6 +19,7 @@ fun VacanciesComponent(
     modifier: Modifier = Modifier,
     contentState: StateListWrapper<Vacancy>,
     contentArrangement: Arrangement.Vertical = CardVacancyItemDefaults.VerticalArrangement.ForYou,
+    onFavouriteClick: (Vacancy) -> Unit = { },
 ) {
     Column(
         modifier = modifier,
@@ -30,6 +31,7 @@ fun VacanciesComponent(
             contentState.data.forEach { vacancy ->
                 CardVacancyItem(
                     data = vacancy,
+                    onFavouriteClick = onFavouriteClick,
                 )
             }
         }

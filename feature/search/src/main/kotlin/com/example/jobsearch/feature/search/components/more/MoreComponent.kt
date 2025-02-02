@@ -25,7 +25,6 @@ internal fun MoreComponent(
 
     JobSearchButton(
         modifier = modifier
-            .padding(horizontal = 16.dp)
             .fillMaxWidth(),
         contentColor = MaterialTheme.colorScheme.onPrimary,
         containerColor = blue,

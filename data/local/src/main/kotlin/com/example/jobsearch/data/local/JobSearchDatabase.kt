@@ -10,7 +10,6 @@ import com.example.jobsearch.data.local.model.vacancy.AddressEntity
 import com.example.jobsearch.data.local.model.vacancy.ExperienceEntity
 import com.example.jobsearch.data.local.model.vacancy.SalaryEntity
 import com.example.jobsearch.data.local.model.vacancy.VacancyEntity
-import com.example.jobsearch.domain.model.vacancies.Salary
 
 @Database(
     entities = [
@@ -19,7 +18,7 @@ import com.example.jobsearch.domain.model.vacancies.Salary
         ExperienceEntity::class,
         SalaryEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
 )
 @TypeConverters(LocalDateConverter::class, ListStringConverter::class)

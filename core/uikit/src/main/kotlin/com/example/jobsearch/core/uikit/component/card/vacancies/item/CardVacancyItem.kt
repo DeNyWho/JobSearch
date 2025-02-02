@@ -1,6 +1,7 @@
 package com.example.jobsearch.core.uikit.component.card.vacancies.item
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -38,6 +39,7 @@ import java.util.Locale
 internal fun CardVacancyItem(
     modifier: Modifier = Modifier,
     data: Vacancy,
+    onFavouriteClick: (Vacancy) -> Unit = { },
 ) {
     val formatter = DateTimeFormatter.ofPattern("dd MMMM", Locale("ru"))
     val lookingNumber = data.lookingNumber
@@ -124,6 +126,9 @@ internal fun CardVacancyItem(
 
                 Image(
                     modifier = Modifier
+                        .clickable {
+                            onFavouriteClick.invoke(data)
+                        }
                         .size(24.dp)
                         .align(Alignment.Top),
                     painter = if(data.isFavorite) painterResource(JobSearchIcons.heartFavourite) else painterResource(JobSearchIcons.heart),

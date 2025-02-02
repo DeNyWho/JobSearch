@@ -3,7 +3,6 @@ package com.example.jobsearch.domain.model.vacancies
 import androidx.compose.runtime.Immutable
 import java.time.LocalDate
 
-@Immutable
 data class Vacancy(
     val id: String = "",
     val lookingNumber: Int? = null,

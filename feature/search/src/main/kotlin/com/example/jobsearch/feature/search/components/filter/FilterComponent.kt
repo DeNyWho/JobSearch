@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.jobsearch.core.uikit.icon.JobSearchIcons
 import com.example.jobsearch.core.uikit.theme.blue
@@ -40,7 +41,7 @@ internal fun FilterComponent(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = pluralStringResource(R.plurals.feature_search_section_filter_vacancies, vacanciesSize, vacanciesSize),
+                text = stringResource(R.string.feature_search_section_filter),
                 style = MaterialTheme.typography.bodyLarge,
                 color = blue,
             )

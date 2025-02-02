@@ -17,7 +17,7 @@ internal class VacanciesComponentProvider:
     override val values: Sequence<VacanciesComponentPreviewParam>
         get() = listOf(
             VacanciesComponentPreviewParam(
-                contentState = StateListWrapper(data = Vacancies.take(2).toImmutableList()),
+                contentState = StateListWrapper(data = Vacancies.take(3).toImmutableList()),
             )
         ).asSequence()
 }

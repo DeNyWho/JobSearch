@@ -49,6 +49,9 @@ internal fun SearchScreen(
         onBackClick = {
             viewModel.changeUiState()
         },
+        onFavouriteClick = { vacancy ->
+            viewModel.changeFavourite(vacancy)
+        },
     )
 }
 
@@ -60,6 +63,7 @@ private fun SearchContent(
     vacanciesForYou: StateListWrapper<Vacancy>,
     onMoreClick: () -> Unit = { },
     onBackClick: () -> Unit = { },
+    onFavouriteClick: (Vacancy) -> Unit = { },
 ) {
     Column {
         when (uiState.uiScreen) {
@@ -70,6 +74,7 @@ private fun SearchContent(
                     vacanciesForYou = vacanciesForYou,
                     uiState = uiState,
                     onMoreClick = onMoreClick,
+                    onFavouriteClick = onFavouriteClick,
                 )
             }
             SearchUiScreen.All -> {
@@ -77,6 +82,7 @@ private fun SearchContent(
                     vacancies = vacancies,
                     uiState = uiState,
                     onBackClick = onBackClick,
+                    onFavouriteClick = onFavouriteClick,
                 )
             }
         }
@@ -90,6 +96,7 @@ private fun SearchUIForYou(
     vacanciesForYou: StateListWrapper<Vacancy>,
     uiState: SearchUiState,
     onMoreClick: () -> Unit = { },
+    onFavouriteClick: (Vacancy) -> Unit = { },
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -122,12 +129,14 @@ private fun SearchUIForYou(
             VacanciesComponent(
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
                 contentState = vacanciesForYou,
+                onFavouriteClick = onFavouriteClick,
             )
         }
 
         item {
             MoreComponent(
-                modifier = Modifier.padding(top = 24.dp),
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, top = 24.dp),
                 contentState = vacancies,
                 onClick = onMoreClick,
             )
@@ -140,6 +149,7 @@ private fun SearchUIAll(
     vacancies: StateListWrapper<Vacancy>,
     uiState: SearchUiState,
     onBackClick: () -> Unit,
+    onFavouriteClick: (Vacancy) -> Unit = { },
 ) {
     Column(
         modifier = Modifier
@@ -164,6 +174,7 @@ private fun SearchUIAll(
                 VacanciesComponent(
                     modifier = Modifier.padding(top = 24.dp, start = 16.dp, end = 16.dp),
                     contentState = vacancies,
+                    onFavouriteClick = onFavouriteClick,
                 )
             }
         }
