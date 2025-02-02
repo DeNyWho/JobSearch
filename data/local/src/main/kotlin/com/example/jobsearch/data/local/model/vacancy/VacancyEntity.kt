@@ -20,6 +20,7 @@ data class VacancyEntity(
     val appliedNumber: Int?,
     val description: String,
     val responsibilities: String,
+    val questions: List<String> = listOf(),
 )
 
 data class VacancyWithDetails(
