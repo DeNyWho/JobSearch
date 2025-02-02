@@ -1,44 +1,72 @@
 package com.example.jobsearch.feature.favourite
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.jobsearch.core.uikit.theme.basicBlack
+import com.example.jobsearch.core.uikit.component.card.vacancies.VacanciesComponent
 import com.example.jobsearch.core.uikit.utils.DefaultPreview
+import com.example.jobsearch.domain.model.vacancies.Vacancy
+import com.example.jobsearch.domain.state.StateListWrapper
+import com.example.jobsearch.feature.favourite.component.top.ComponentTop
+import com.example.jobsearch.feature.favourite.param.FavouriteContentPreviewParam
+import com.example.jobsearch.feature.favourite.param.FavouriteContentProvider
 
 @Composable
 internal fun FavouriteScreen(
     viewModel: FavouriteViewModel = hiltViewModel(),
 ) {
-    FavouriteUI()
+    val vacancies by viewModel.vacancies.collectAsState()
+
+    FavouriteContent(
+        vacancies = vacancies,
+        onFavouriteClick = { vacancy ->
+            viewModel.changeFavourite(vacancy)
+        }
+    )
 }
 
 @Composable
-private fun FavouriteUI() {
-    Box(
-        modifier = Modifier
-            .background(basicBlack)
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center,
+private fun FavouriteContent(
+    vacancies: StateListWrapper<Vacancy>,
+    onFavouriteClick: (Vacancy) -> Unit = { },
+) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
     ) {
-        Text(
-            text = "Favourite Screen",
-            style = MaterialTheme.typography.titleLarge,
-        )
+        item {
+            ComponentTop(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp),
+                contentState = vacancies,
+            )
+        }
+
+        item {
+            VacanciesComponent(
+                modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                contentState = vacancies,
+                onFavouriteClick = onFavouriteClick,
+            )
+        }
     }
 }
 
-@PreviewScreenSizes
+@Preview
 @Composable
-private fun PreviewFavouriteUI() {
+private fun PreviewSearchContent(
+    @PreviewParameter(FavouriteContentProvider::class) param: FavouriteContentPreviewParam,
+) {
     DefaultPreview {
-        FavouriteUI()
+        FavouriteContent(
+            vacancies = param.vacancies,
+        )
     }
 }
