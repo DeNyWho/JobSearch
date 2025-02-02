@@ -1,11 +1,10 @@
 package com.example.jobsearch.domain.state
 
 import com.example.jobsearch.domain.model.common.request.ApiError
-import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
 data class StateListWrapper<T>(
-    val data: ImmutableList<T> = persistentListOf(),
+    val data: List<T> = persistentListOf(),
     val isLoading: Boolean = false,
     val error: ApiError? = null,
 ) {

@@ -8,6 +8,10 @@ import com.example.jobsearch.data.local.mappers.vacancy.toVacancy
 import com.example.jobsearch.data.local.mappers.vacancy.toVacancyEntity
 import com.example.jobsearch.domain.model.vacancies.Vacancy
 import com.example.jobsearch.domain.repository.vacancies.VacanciesLocalRepository
+import com.example.jobsearch.domain.state.StateListWrapper
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 internal class VacanciesLocalRepositoryImpl(
     private val vacancyDao: VacancyDao,
@@ -38,4 +42,9 @@ internal class VacanciesLocalRepositoryImpl(
         return vacancyDao.getVacancyById(vacancy.id)?.toVacancy()
     }
 
+    override suspend fun getFavouriteVacancies(): Flow<StateListWrapper<Vacancy>> {
+        return vacancyDao.getFavoriteVacancies().map { list ->
+            StateListWrapper(list.map { it.toVacancy() }.toImmutableList())
+        }
+    }
 }

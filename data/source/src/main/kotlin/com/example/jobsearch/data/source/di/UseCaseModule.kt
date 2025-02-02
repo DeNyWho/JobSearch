@@ -4,6 +4,7 @@ import com.example.jobsearch.domain.repository.offers.OffersRepository
 import com.example.jobsearch.domain.repository.vacancies.VacanciesLocalRepository
 import com.example.jobsearch.domain.repository.vacancies.VacanciesRepository
 import com.example.jobsearch.domain.usecase.offers.GetOffersUseCase
+import com.example.jobsearch.domain.usecase.vacancies.GetFavouriteVacanciesUseCase
 import com.example.jobsearch.domain.usecase.vacancies.GetVacanciesUseCase
 import com.example.jobsearch.domain.usecase.vacancies.InsertLocalVacanciesUseCase
 import com.example.jobsearch.domain.usecase.vacancies.UpdateLocalFavouriteVacanciesUseCase
@@ -21,6 +22,12 @@ internal object UseCaseModule {
     @Singleton
     fun provideGetVacanciesUseCase(vacanciesRepository: VacanciesRepository): GetVacanciesUseCase {
         return GetVacanciesUseCase(vacanciesRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetFavouriteVacanciesUseCase(vacanciesLocalRepository: VacanciesLocalRepository): GetFavouriteVacanciesUseCase {
+        return GetFavouriteVacanciesUseCase(vacanciesLocalRepository)
     }
 
     @Provides

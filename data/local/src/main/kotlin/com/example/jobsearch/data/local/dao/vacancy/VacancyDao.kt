@@ -46,9 +46,8 @@ interface VacancyDao {
     suspend fun getVacancyById(vacancyId: String): VacancyWithDetails?
 
     @Query("SELECT * FROM vacancy")
-    fun getVacancies(): List<VacancyWithDetails>
+    fun getVacancies(): Flow<List<VacancyWithDetails>>
 
-    @Transaction
     @Query("SELECT * FROM vacancy WHERE isFavorite = 1")
     fun getFavoriteVacancies(): Flow<List<VacancyWithDetails>>
 

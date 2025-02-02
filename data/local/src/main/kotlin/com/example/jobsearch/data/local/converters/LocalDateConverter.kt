@@ -2,7 +2,6 @@ package com.example.jobsearch.data.local.converters
 
 import androidx.room.TypeConverter
 import java.time.LocalDate
-import java.time.ZoneId
 
 internal class LocalDateConverter {
     @TypeConverter
@@ -12,7 +11,6 @@ internal class LocalDateConverter {
 
     @TypeConverter
     fun dateToTimestamp(date: LocalDate?): Long? {
-        val zoneId: ZoneId = ZoneId.systemDefault()
-        return date?.atStartOfDay(zoneId)?.toEpochSecond()
+        return date?.toEpochDay()
     }
 }

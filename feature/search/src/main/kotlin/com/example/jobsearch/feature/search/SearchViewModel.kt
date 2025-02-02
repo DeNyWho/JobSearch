@@ -11,7 +11,6 @@ import com.example.jobsearch.domain.usecase.vacancies.UpdateLocalFavouriteVacanc
 import com.example.jobsearch.feature.search.model.state.SearchUiState
 import com.example.jobsearch.feature.search.model.ui.SearchUiScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -61,42 +60,25 @@ internal class SearchViewModel @Inject constructor(
     }
 
     private fun getVacancies() {
-        getVacanciesUseCase.invoke().onEach {
-            _vacancies.value = it
-        }.launchIn(viewModelScope)
+        viewModelScope.launch {
+            getVacanciesUseCase.invoke().onEach {
+                _vacancies.value = it
+            }.launchIn(viewModelScope)
+        }
     }
 
     private fun getVacanciesForYou() {
-        getVacanciesUseCase.invoke(isForYou = true).onEach {
-            _vacanciesForYou.value = it
-        }.launchIn(viewModelScope)
+        viewModelScope.launch {
+            getVacanciesUseCase.invoke(isForYou = true).onEach {
+                _vacanciesForYou.value = it
+            }.launchIn(viewModelScope)
+        }
     }
 
     fun changeFavourite(vacancy: Vacancy) {
         viewModelScope.launch {
-            println("WAFL S = $vacancy")
-            val updatedVacancy = updateLocalFavouriteVacanciesUseCase.invoke(vacancy)
-            println("WAFL U = $updatedVacancy")
-
-            updatedVacancy?.let { newVacancy ->
-                updateVacancyInState(newVacancy)
-            }
+            updateLocalFavouriteVacanciesUseCase.invoke(vacancy)
         }
-    }
-
-    private fun updateVacancyInState(newVacancy: Vacancy) {
-        println("WAFL = $newVacancy")
-        _vacancies.value = _vacancies.value.copy(
-            data = _vacancies.value.data.map { vacancy ->
-                if (vacancy.id == newVacancy.id) newVacancy else vacancy
-            }.toImmutableList()
-        )
-
-        _vacanciesForYou.value = _vacanciesForYou.value.copy(
-            data = _vacanciesForYou.value.data.map { vacancy ->
-                if (vacancy.id == newVacancy.id) newVacancy else vacancy
-            }.toImmutableList()
-        )
     }
 
     fun changeUiState() {
