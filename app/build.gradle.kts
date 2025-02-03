@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.example.jobsearch"
         versionCode = 100
-        versionName = "1.0.0-alpha"
+        versionName = "1.0.0"
 
         vectorDrawables {
             useSupportLibrary = true
