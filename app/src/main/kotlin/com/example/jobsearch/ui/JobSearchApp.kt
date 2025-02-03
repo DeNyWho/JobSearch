@@ -47,7 +47,10 @@ import com.example.jobsearch.navigation.TopLevelDestination
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun JobSearchApp(appState: JobSearchAppState) {
+fun JobSearchApp(
+    appState: JobSearchAppState,
+    favouriteVacanciesCount: Int,
+) {
     val screensWithNavBar = listOf(
         SEARCH_ROUTE,
         FAVOURITE_ROUTE,
@@ -103,6 +106,9 @@ fun JobSearchApp(appState: JobSearchAppState) {
                                         )
                                     },
                                     onClick = { appState.navigateToTopLevelDestination(destination) },
+                                    badgeCount = if(destination == TopLevelDestination.FAVOURITE) {
+                                        favouriteVacanciesCount
+                                    } else 0,
                                 )
                             }
                         }

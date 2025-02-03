@@ -13,7 +13,7 @@ enum class TopLevelDestination(
         iconTextId = R.string.navigation_bar_search_title,
     ),
     FAVOURITE(
-        icon = JobSearchIcons.heartNovistigation,
+        icon = JobSearchIcons.heart,
         iconTextId = R.string.navigation_bar_favourite_title,
     ),
     RESPONSE(
