@@ -30,6 +30,7 @@ import com.example.jobsearch.feature.search.param.SearchContentProvider
 @Composable
 internal fun SearchScreen(
     viewModel: SearchViewModel = hiltViewModel(),
+    onVacancyClick: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val offers by viewModel.offers.collectAsState()
@@ -48,6 +49,7 @@ internal fun SearchScreen(
         onFavouriteClick = { vacancy ->
             viewModel.changeFavourite(vacancy)
         },
+        onVacancyClick = onVacancyClick,
     )
 }
 
@@ -59,6 +61,7 @@ private fun SearchContent(
     onMoreClick: () -> Unit = { },
     onBackClick: () -> Unit = { },
     onFavouriteClick: (Vacancy) -> Unit = { },
+    onVacancyClick: () -> Unit = { },
 ) {
     Column {
         when (uiState.uiScreen) {
@@ -69,6 +72,7 @@ private fun SearchContent(
                     uiState = uiState,
                     onMoreClick = onMoreClick,
                     onFavouriteClick = onFavouriteClick,
+                    onVacancyClick = onVacancyClick,
                 )
             }
             SearchUiScreen.All -> {
@@ -77,6 +81,7 @@ private fun SearchContent(
                     uiState = uiState,
                     onBackClick = onBackClick,
                     onFavouriteClick = onFavouriteClick,
+                    onVacancyClick = onVacancyClick,
                 )
             }
         }
@@ -90,6 +95,7 @@ private fun SearchUIForYou(
     uiState: SearchUiState,
     onMoreClick: () -> Unit = { },
     onFavouriteClick: (Vacancy) -> Unit = { },
+    onVacancyClick: () -> Unit = { },
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -122,6 +128,7 @@ private fun SearchUIForYou(
                 contentState = vacancies,
                 onFavouriteClick = onFavouriteClick,
                 isForYou = true,
+                onCardClick = onVacancyClick,
             )
         }
 
@@ -142,6 +149,7 @@ private fun SearchUIAll(
     uiState: SearchUiState,
     onBackClick: () -> Unit,
     onFavouriteClick: (Vacancy) -> Unit = { },
+    onVacancyClick: () -> Unit = { },
 ) {
     Column(
         modifier = Modifier
@@ -167,6 +175,7 @@ private fun SearchUIAll(
                     modifier = Modifier.padding(top = 24.dp, start = 16.dp, end = 16.dp),
                     contentState = vacancies,
                     onFavouriteClick = onFavouriteClick,
+                    onCardClick = onVacancyClick,
                 )
             }
         }

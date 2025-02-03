@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -40,12 +41,14 @@ internal fun CardVacancyItem(
     modifier: Modifier = Modifier,
     data: Vacancy,
     onFavouriteClick: (Vacancy) -> Unit = { },
+    onCardClick: () -> Unit = { },
 ) {
     val formatter = DateTimeFormatter.ofPattern("dd MMMM", Locale("ru"))
     val lookingNumber = data.lookingNumber
 
     Card(
         modifier = modifier
+            .clickable { onCardClick.invoke() }
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
@@ -139,6 +142,7 @@ internal fun CardVacancyItem(
             JobSearchButton(
                 modifier = Modifier
                     .padding(top = 20.dp)
+                    .pointerInput(Unit) { }
                     .fillMaxWidth(),
                 contentColor = MaterialTheme.colorScheme.onPrimary,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,

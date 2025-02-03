@@ -2,7 +2,7 @@
 <resources>
     <string name="feature_search_section_vacancy_for_you_title">Вакансии для вас</string>
     <string name="feature_search_section_search_for_you">Должность, ключевые слова</string>
-    <string name="feature_search_section_search_all">Поиск по подходящим вакансиям</string>
+    <string name="feature_search_section_search_all">Должность по подходящим вакансиям</string>
     <string name="feature_search_section_filter">По соответствию</string>
     <string name="feature_search_section_button">Еще</string>
 </resources>

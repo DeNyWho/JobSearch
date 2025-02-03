@@ -39,6 +39,13 @@ internal class VacanciesLocalRepositoryImpl(
             vacancyDao.updateFavoriteStatus(vacancy.id)
         }
 
+        val vacancyLocal = vacancyDao.getVacancyById(vacancy.id)?.toVacancy()
+
+        if(vacancyLocal?.isFavorite == false) {
+            vacancyDao.deleteVacancy(vacancy.id)
+            return null
+        }
+
         return vacancyDao.getVacancyById(vacancy.id)?.toVacancy()
     }
 

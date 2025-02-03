@@ -24,6 +24,7 @@ fun VacanciesComponent(
     contentState: StateListWrapper<Vacancy>,
     contentArrangement: Arrangement.Vertical = CardVacancyItemDefaults.VerticalArrangement.ForYou,
     onFavouriteClick: (Vacancy) -> Unit = { },
+    onCardClick: () -> Unit = { },
     shimmer: Shimmer = rememberShimmer(ShimmerBounds.View),
     isForYou: Boolean = false,
 ) {
@@ -35,7 +36,11 @@ fun VacanciesComponent(
             ShowCardVacancyItemShimmer(shimmerInstance = shimmer)
         } else {
             contentState.data.take(if (isForYou) 3 else contentState.data.size).forEach { vacancy ->
-                CardVacancyItem(data = vacancy, onFavouriteClick = onFavouriteClick)
+                CardVacancyItem(
+                    data = vacancy,
+                    onFavouriteClick = onFavouriteClick,
+                    onCardClick = onCardClick,
+                )
             }
         }
     }

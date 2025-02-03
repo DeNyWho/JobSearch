@@ -22,6 +22,7 @@ import com.example.jobsearch.feature.favourite.param.FavouriteContentProvider
 @Composable
 internal fun FavouriteScreen(
     viewModel: FavouriteViewModel = hiltViewModel(),
+    onVacancyClick: () -> Unit,
 ) {
     val vacancies by viewModel.vacancies.collectAsState()
 
@@ -29,7 +30,8 @@ internal fun FavouriteScreen(
         vacancies = vacancies,
         onFavouriteClick = { vacancy ->
             viewModel.changeFavourite(vacancy)
-        }
+        },
+        onVacancyClick = onVacancyClick,
     )
 }
 
@@ -37,6 +39,7 @@ internal fun FavouriteScreen(
 private fun FavouriteContent(
     vacancies: StateListWrapper<Vacancy>,
     onFavouriteClick: (Vacancy) -> Unit = { },
+    onVacancyClick: () -> Unit = { },
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -54,6 +57,7 @@ private fun FavouriteContent(
                 modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
                 contentState = vacancies,
                 onFavouriteClick = onFavouriteClick,
+                onCardClick = onVacancyClick,
             )
         }
     }

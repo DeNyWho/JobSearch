@@ -54,6 +54,25 @@ interface VacancyDao {
     @Query("UPDATE vacancy SET isFavorite = NOT isFavorite WHERE id = :vacancyId")
     suspend fun updateFavoriteStatus(vacancyId: String)
 
-    @Query("DELETE FROM vacancy WHERE id = :vacancyId")
+    @Query("DELETE FROM vacancy_experience where vacancyId = :vacancyId")
+    suspend fun deleteExperience(vacancyId: String)
+
+    @Query("DELETE FROM vacancy_address where vacancyId = :vacancyId")
+    suspend fun deleteAddress(vacancyId: String)
+
+    @Query("DELETE FROM vacancy_salary where vacancyId = :vacancyId")
+    suspend fun deleteSalary(vacancyId: String)
+
+    @Query("DELETE FROM vacancy where id = :vacancyId")
     suspend fun deleteVacancy(vacancyId: String)
+
+    @Transaction
+    suspend fun deleteVacancyFull(
+        vacancyId: String
+    ) {
+        deleteAddress(vacancyId)
+        deleteSalary(vacancyId)
+        deleteExperience(vacancyId)
+        deleteVacancy(vacancyId)
+    }
 }

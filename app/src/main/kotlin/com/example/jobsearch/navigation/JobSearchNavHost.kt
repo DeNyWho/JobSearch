@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.example.jobsearch.feature.auth.navigation.authScreen
 import com.example.jobsearch.feature.detail.navigation.detailScreen
+import com.example.jobsearch.feature.detail.navigation.navigateToDetail
 import com.example.jobsearch.feature.favourite.navigation.favouriteScreen
 import com.example.jobsearch.feature.messages.navigation.messagesScreen
 import com.example.jobsearch.feature.profile.navigation.profileScreen
@@ -27,8 +28,8 @@ fun JobSearchNavHost(
         modifier = modifier,
     ) {
         authScreen()
-        searchScreen()
-        favouriteScreen()
+        searchScreen(navController::navigateToDetail)
+        favouriteScreen(navController::navigateToDetail)
         detailScreen()
         messagesScreen()
         responsesScreen()
