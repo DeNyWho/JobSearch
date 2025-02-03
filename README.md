@@ -23,7 +23,6 @@ The job search app was developed as a test assignment for an Effective Mobile co
 - Room
 - Kotlinx Serialization
 - Material3
-- Coil
 
 ## 📸 Screenshots
 
